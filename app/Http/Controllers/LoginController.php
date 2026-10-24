@@ -3,62 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    //
     public function index()
     {
-        echo "This is login";
+        return view('Pages/login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function signin(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $data = DB::table('user')->where('email', $request->email)->where('password', $request->password)->get();
+        $data = $data->toArray();
+        switch (count($data)) {
+            case 0:
+                $err = "Email hoặc mật khẩu không chính xác!";
+                return view('Pages/login', compact('err'));
+            default:
+                session_start();
+                // dd($data[0]);
+                $data = $data[0];
+                $_SESSION['auth'] = $data->id;
+                return view('Pages/home');
+        }
     }
 }

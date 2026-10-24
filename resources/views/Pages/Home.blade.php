@@ -792,8 +792,5 @@
         </div>
     </div>
 </section>
-<!-- <?php
-        if ($auth) echo "Đã đăng nhập";
-        else echo "Chưa đăng nhập";
-        ?> -->
+
 @endsection

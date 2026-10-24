@@ -11,7 +11,7 @@ class DemoController extends Controller
      */
     public function index()
     {
-        echo "This is demo";
+        echo "This is demo";    
     }
 
     /**

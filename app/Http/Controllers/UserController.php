@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -11,11 +12,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $name = 'Vitalis';
-        $age = 18;
-        $habits = ['Video game', 'Film'];
+        $data = DB::table('user')->get();
+        // dd($data);
 
-        return view('user', compact('name', 'age', 'habits'));
+        return view('user', compact('data'));
     }
 
     /**
@@ -23,7 +23,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        DB::table('user')->insert(['name' => 'Đặng Công Phú', 'email' => 'admin@gmail.com', 'password' => '123']);
+        DB::table('user')->insert(['name' => 'Nguyễn Văn A', 'email' => 'nguyenvana@gmail.com', 'password' => '123']);
+        DB::table('user')->insert(['name' => 'Nguyễn Văn B', 'email' => 'nguyenvanb@gmail.com', 'password' => '123']);
     }
 
     /**
