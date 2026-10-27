@@ -14,14 +14,17 @@
         <input type="text" name="national" placeholder="Nhập quốc tịch" value="<?php echo $data->national ?>">
         <input type="text" name="position" placeholder="Nhập vị trí" value="<?php echo $data->position ?>">
         <input type="text" name="salary" placeholder="Nhập lương" value="<?php echo $data->salary ?>">
-        <p><?php
-            try {
-                echo $msg;
-            } catch (Exception $ex) {
-            }
-            ?></p>
         <button type="submit" name="submit">Thêm</button>
     </form>
+    @if($errors->any())
+    <div>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 </body>
 
 </html>
