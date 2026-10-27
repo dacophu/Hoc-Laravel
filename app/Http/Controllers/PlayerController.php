@@ -43,10 +43,13 @@ class PlayerController extends Controller
 
     public function edit($id)
     {
-        $data = DB::table('player')->where('id', $id)->get();
+        // $data = DB::table('player')->where('id', $id)->get();
 
-        // dd($data);
-        $data = $data[0];
+        // // dd($data);
+        // $data = $data[0];
+
+        $data = Player::find($id);
+
         return view('edit-player', compact('data'));
     }
 
