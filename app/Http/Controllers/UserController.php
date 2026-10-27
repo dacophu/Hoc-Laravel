@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -12,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data = DB::table('user')->get();
+        // $data = DB::table('user')->get();
+        $data = User::all();
         // dd($data);
 
         return view('user', compact('data'));

@@ -5,6 +5,7 @@ use App\Http\Controllers\DemoController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TestLoginController;
@@ -56,4 +57,14 @@ Route::get('/user/create', [UserController::class, 'create']);
 
 //Route::post('/login', [TestLoginController::class, 'login']);
 
-// Route::get('/product/{id}', [ProductController::class, 'index']);
+Route::get('/product/{id}', [ProductController::class, 'index']);
+
+Route::get('player/list', [PlayerController::class, 'index']);
+
+Route::get('player/add', [PlayerController::class, 'add']);
+Route::post('player/add', [PlayerController::class, 'insert']);
+
+Route::get('player/edit/{id}', [PlayerController::class, 'edit']);
+Route::post('player/edit/{id}', [PlayerController::class, 'update']);
+
+Route::get('player/delete/{id}', [PlayerController::class, 'delete']);

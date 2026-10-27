@@ -39,7 +39,7 @@ class AccountController extends Controller
 
 
         if ($valid) {
-            DB::table('user')->where('email', $request->email)->update(['name' => $request->name], ['password' => $request->password]);
+            DB::table('user')->where('email', $request->email)->update(['name' => $request->name, 'password' => $request->password]);
             return view('Pages/account');
         } else {
             return view('Pages/account', compact('err'));
