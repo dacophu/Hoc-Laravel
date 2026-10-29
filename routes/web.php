@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TestHomeController;
 use App\Http\Controllers\TestLoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Login;
@@ -68,3 +69,8 @@ Route::get('player/edit/{id}', [PlayerController::class, 'edit']);
 Route::post('player/edit/{id}', [PlayerController::class, 'update']);
 
 Route::get('player/delete/{id}', [PlayerController::class, 'delete']);
+
+Auth::routes();
+Route::get('/home', [TestHomeController::class, 'index']);
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
