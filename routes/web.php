@@ -12,6 +12,7 @@ use App\Http\Controllers\TestHomeController;
 use App\Http\Controllers\TestLoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Login;
+use Illuminate\Support\Facades\Auth;
 
 // Route::get('/', function () {
 //     return view('Pages/Home');
@@ -73,4 +74,4 @@ Route::get('player/delete/{id}', [PlayerController::class, 'delete']);
 Auth::routes();
 Route::get('/home', [TestHomeController::class, 'index']);
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
